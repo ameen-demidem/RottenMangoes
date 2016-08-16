@@ -1,0 +1,26 @@
+<h1>Rotten Mangoes</h1>
+<%= link_to new_movie_url do %>
+  <h5>Add a new movie</h5>
+<% end %>
+<hr>
+
+<% @movies.each do |movie| %>
+  <%= link_to(movie) do %>
+    <h3><strong>Title:</strong> <%= movie.title %></h3>
+  <% end %>
+
+  <%= link_to movie, method: :delete, data: { confirm: "Are you sure?" } do %>
+    <h5>(delete!)</h5>
+  <% end %>
+
+  <p><strong>Director:</strong> <%= movie.director %></p><br>
+  <p><strong>Runtime (m):</strong> <%= movie.runtime_in_minutes %></p><br>
+  <div style="width: 500px" >
+    <p><strong>Description:</strong> <%= movie.description %></p><br>
+  </div>
+  <p><strong>Released on:</strong> <%= movie.release_date %></p><br>
+  <div style="width: 400px; overflow="hidden">
+    <%= link_to image_tag(movie.poster_image_url, style: "width: 100%"), movie %>
+  </div>
+  <hr>
+<% end %>

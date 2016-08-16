@@ -1,0 +1,16 @@
+<h1><strong>Title:</strong> <%= @movie.title %></h1>
+<h5><%= link_to "Go Back", movies_path %></h5>
+
+<%= link_to edit_movie_url do %>
+  <h5>(edit!)</h5>
+<% end %>
+
+<hr>
+<p><strong>Director:</strong> <%= @movie.director %></p><br>
+<p><strong>Runtime (m):</strong> <%= @movie.runtime_in_minutes %></p><br>
+<div style="width: 500px" >
+  <p><strong>Description:</strong> <%= @movie.description %></p><br>
+</div>
+<p><strong>Released on:</strong> <%= @movie.release_date %></p><br>
+<img src="<%= @movie.poster_image_url %>" width="400">
+<hr>

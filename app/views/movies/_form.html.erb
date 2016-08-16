@@ -1,0 +1,36 @@
+<%= form_for @movie do |f| %>
+  <div>
+    <%= f.label "Title: " %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div>
+    <%= f.label "Director: " %>
+    <%= f.text_field :director %>
+  </div>
+
+  <div>
+    <%= f.label "Runtime in minutes: " %>
+    <%= f.text_field :runtime_in_minutes %>
+  </div>
+
+  <div>
+    <%= f.label "Description: " %>
+    <%= f.text_area :description %>
+  </div>
+
+  <div>
+    <%= f.label "Release Date: " %>
+    <%= f.date_select :release_date %>
+  </div>
+
+  <div>
+    <%= f.label "Post Image URL: " %>
+    <%= f.text_field :poster_image_url %>
+  </div>
+
+  <div>
+    <%= f.submit %>
+  </div>
+<% end %>
+
