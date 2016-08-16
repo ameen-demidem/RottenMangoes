@@ -9,6 +9,12 @@
   </head>
 
   <body>
+    <% if flash[:error] %>
+      <div style="font-size: 2em; outline: 3px red solid; display:inline-block">
+        Something went wrong: <%= flash[:error] %>
+      </div>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>

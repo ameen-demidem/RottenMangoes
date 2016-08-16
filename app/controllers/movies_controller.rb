@@ -31,8 +31,12 @@ class MoviesController < ApplicationController
     @movie = Movie.find_by(id: params[:id])
     redirect_to movies_path unless @movie
 
-    redirect_to movie_path(@movie) if @movie.update_attributes(movie_params)
-    flash[:error] = "Couldn't update the movie!"
+    if @movie.update_attributes(movie_params)
+      redirect_to movie_path(@movie)
+    else
+      flash[:error] = "Couldn't update the movie!"
+      redirect_to edit_movie_path(@movie)
+    end
   end
 
   def destroy
