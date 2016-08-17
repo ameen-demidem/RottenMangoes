@@ -9,9 +9,9 @@
   </head>
 
   <body>
-    <% if flash[:error] %>
+    <% if flash.alert %>
       <div style="font-size: 2em; outline: 3px red solid; display:inline-block">
-        Something went wrong: <%= flash[:error] %>
+        Something went wrong: <%= flash.alert %>
       </div>
     <% end %>
 

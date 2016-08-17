@@ -8,7 +8,7 @@ class MoviesController < ApplicationController
     if @movie.save
       redirect_to movies_path
     else
-      flash[:error] = "Couldn't create the new movie!"
+      flash.alert = "Couldn't create the new movie!"
       redirect_to new_movie_path
     end
   end
@@ -34,7 +34,7 @@ class MoviesController < ApplicationController
     if @movie.update_attributes(movie_params)
       redirect_to movie_path(@movie)
     else
-      flash[:error] = "Couldn't update the movie!"
+      flash.alert = "Couldn't update the movie!"
       redirect_to edit_movie_path(@movie)
     end
   end

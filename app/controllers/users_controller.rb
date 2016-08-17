@@ -7,8 +7,10 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
+      session[:user_id] = @user.id
       redirect_to movies_path
     else
+      flash.now.alert = "Couldn't create the user #{@user.firstname} #{@user.lastname}!"
       render :new
     end
   end
