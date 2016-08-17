@@ -1,0 +1,38 @@
+<h1>Sign up</h1>
+<hr>
+
+<% if @user.errors.present? %>
+  <div>
+    <ul>
+      <% @user.errors.full_messages.each do |m| %>
+        <li><%= m %></li>
+      <% end %>
+    </ul>
+  </div> 
+<% end %>
+
+<%= form_for @user do |f| %>
+  <div>
+    <%= f.label "First name: " %>
+    <%= f.text_field :firstname %>
+  </div>
+  <div>
+    <%= f.label "Last name: " %>
+    <%= f.text_field :lastname %>
+  </div>
+  <div>
+    <%= f.label "Email: " %>
+    <%= f.text_field :email %>
+  </div>
+  <div>
+    <%= f.label "Password: " %>
+    <%= f.password_field :password %>
+  </div>
+  <div>
+    <%= f.label "Confirm your password: " %>
+    <%= f.password_field :password_confirmation %>
+  </div>
+  <div>
+    <%= f.submit %>
+  </div>
+<% end %>
