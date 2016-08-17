@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
     @user = User.find_by(email: params[:email]).try(:authenticate, params[:password])
     if @user
       session[:user_id] = @user.id 
-      redirect_to movies_path
+      redirect_to movies_path, notice: "Welcome back, #{@user.firstname}!"
     else
       flash.now.alert = "Wrong email or password!"
       render :new

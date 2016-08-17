@@ -9,10 +9,8 @@
   </head>
 
   <body>
-    <% if flash.alert %>
-      <div style="font-size: 2em; outline: 3px red solid; display:inline-block">
-        Something went wrong: <%= flash.alert %>
-      </div>
+    <% flash.each do |key, value| %>
+      <%= content_tag(:div, flash[key]) %>
     <% end %>
 
     <%= yield %>
