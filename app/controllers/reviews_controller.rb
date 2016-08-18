@@ -1,23 +1,13 @@
 class ReviewsController < ApplicationController
-  def new
-    @movie = Movie.find_by(id: params[:movie_id])
-    if !@movie 
-      flash.alert = "Can find movie #{params[:movie_id]} to add a review for!"
-      redirect_to movies_path
-      return
-    end
 
+  before_action :check_authentication
+  before_action :load_movie
+
+  def new
     @review = Review.new
   end
 
   def create
-    @movie = Movie.find_by(id: params[:movie_id])
-    if !@movie
-      flash.alert = "Can find movie #{params[:movie_id]} to add a review for!"
-      redirect_to movies_path
-      return
-    end
-
     @review = Review.new(review_params)
     @review.user = current_user
     @review.movie = @movie
@@ -34,5 +24,14 @@ class ReviewsController < ApplicationController
 
   def review_params
     params.require(:review).permit(:text, :rating_out_of_ten)
+  end
+
+  def load_movie
+    @movie = Movie.find_by(id: params[:movie_id])
+    if !@movie
+      flash.alert = "Can find movie #{params[:movie_id]}!"
+      redirect_to movies_path
+      return
+    end
   end
 end

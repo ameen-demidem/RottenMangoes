@@ -8,4 +8,11 @@ class ApplicationController < ActionController::Base
   end
 
   helper_method :current_user
+
+  def check_authentication
+    if !current_user
+      flash.alert = "You must be logged in!"
+      redirect_to new_session_path
+    end
+  end
 end
