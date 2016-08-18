@@ -14,3 +14,17 @@
 <p><strong>Released on:</strong> <%= @movie.release_date %></p><br>
 <img src="<%= @movie.poster_image_url %>" width="400">
 <hr>
+
+<h2>Reviews:</h2>
+<% @movie.reviews.each do |r| %>
+  <div>
+    <p>Rating: <%= r.rating_out_of_ten %></p>
+    <p><%= r.text %></p>
+    <p><small>by: <%= r.user.firstname %> <%= r.user.lastname %></small></p>
+  </div>
+<% end %>
+<hr>
+
+<%= link_to new_movie_review_path(@movie) do %>
+  <h3>Write a review!</h3>
+<% end %>

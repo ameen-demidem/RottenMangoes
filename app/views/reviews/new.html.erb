@@ -1,0 +1,15 @@
+<h1>Add a review for <%= @movie.title %></h1>
+<hr>
+<%= form_for [@movie, @review] do |f| %>
+  <div>
+    <%= f.label "Review: " %>
+    <%= f.text_area :text %>
+  </div>
+  <div>
+    <%= f.label "Rating: " %>
+    <%= f.text_field :rating_out_of_ten %>
+  </div>
+  <div>
+    <%= f.submit %>
+  </div>
+<% end %>
