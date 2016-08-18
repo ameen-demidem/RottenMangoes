@@ -12,6 +12,10 @@
   <p><strong>Description:</strong> <%= @movie.description %></p><br>
 </div>
 <p><strong>Released on:</strong> <%= @movie.release_date %></p><br>
+<p>
+    <strong>Average rating:</strong>
+    <%= @movie.reviews.average(:rating_out_of_ten).to_f.round(2) %>
+</p>
 <img src="<%= @movie.poster_image_url %>" width="400">
 <hr>
 

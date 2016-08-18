@@ -19,6 +19,10 @@
     <p><strong>Description:</strong> <%= movie.description %></p><br>
   </div>
   <p><strong>Released on:</strong> <%= movie.release_date %></p><br>
+  <p>
+      <strong>Average rating:</strong>
+      <%= movie.reviews.average(:rating_out_of_ten).to_f.round(2) %>
+  </p><br>
   <div style="width: 400px; overflow="hidden">
     <%= link_to image_tag(movie.poster_image_url, style: "width: 100%"), movie %>
   </div>
